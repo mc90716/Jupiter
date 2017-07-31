@@ -47,8 +47,14 @@ public abstract class AbstractJServer implements JServer {
 
     private static final InternalLogger logger = InternalLoggerFactory.getInstance(AbstractJServer.class);
 
+    /**
+     * RPC Server端保存所有服务提供者的容器，内部是一个Map来存放
+     */
     private final ServiceProviderContainer providerContainer = new DefaultServiceProviderContainer();
-    // SPI
+    /**
+     * SPI，存在于Server端的注册器，用于将Server端的服务注册到注册中心去，
+     * publish-->register方法
+     */
     private final RegistryService registryService = JServiceLoader.load(RegistryService.class);
 
     private volatile FlowController<JRequest> flowController;
@@ -163,6 +169,9 @@ public abstract class AbstractJServer implements JServer {
         return serviceWrapper;
     }
 
+    /**
+     * 本地的服务注册，把服务注册到本地，也就是把服务保存到ProviderContainer中
+     */
     class DefaultServiceRegistry implements ServiceRegistry {
 
         private Object serviceProvider;

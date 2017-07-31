@@ -28,10 +28,7 @@ import org.jupiter.transport.JConfig;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * jupiter
- * org.jupiter.transport.netty
- *
- * @author jiachun.fjc
+ *  Netty的UDT连接器，与TCP相比，没有nativeET参数
  */
 public abstract class NettyUdtConnector extends NettyConnector {
 

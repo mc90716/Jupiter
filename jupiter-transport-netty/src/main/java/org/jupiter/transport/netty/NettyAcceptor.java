@@ -40,10 +40,7 @@ import java.util.concurrent.ThreadFactory;
 import static org.jupiter.common.util.JConstants.AVAILABLE_PROCESSORS;
 
 /**
- * jupiter
- * org.jupiter.transport.netty
- *
- * @author jiachun.fjc
+ *  Acceptor是指服务器，监听一个端口，接收客户端发送的请求
  */
 public abstract class NettyAcceptor extends AbstractJServer implements JAcceptor {
 
@@ -91,7 +88,7 @@ public abstract class NettyAcceptor extends AbstractJServer implements JAcceptor
     @Override
     public Protocol protocol() {
         return protocol;
-    }
+    } 
 
     @Override
     public SocketAddress localAddress() {

@@ -28,7 +28,13 @@ import org.jupiter.registry.ConfigServer;
 public class GenericConfigServer {
 
     public static void main(String[] args) {
+        /**
+         * 服务中心，用于对外提供服务发布，取消发布，订阅服务等
+         */
         ConfigServer configServer = new ConfigServer(20001, 1); // 注册中心
+        /**
+         * 服务监控中心，用于对外提供auth,help,metrics,registry,quit这五个命令
+         */
         MonitorServer monitor = new MonitorServer(19998);       // 监控服务
         try {
             monitor.setRegistryMonitor(configServer);

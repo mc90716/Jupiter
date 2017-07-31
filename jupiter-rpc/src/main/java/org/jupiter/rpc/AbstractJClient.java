@@ -52,6 +52,11 @@ public abstract class AbstractJClient implements JClient {
             = AtomicUpdater.newAtomicReferenceFieldUpdater(CopyOnWriteArrayList.class, Object[].class, "array");
 
     // SPI
+
+    /**
+     * SPI，存在于Client端的注册器，用于Client从注册中心订阅服务
+     * subscribe-->doSubscribe
+     */
     private final RegistryService registryService = JServiceLoader.load(RegistryService.class);
     @SuppressWarnings("unchecked")
     private final LoadBalancer<JChannelGroup> loadBalancer = JServiceLoader.load(LoadBalancer.class);

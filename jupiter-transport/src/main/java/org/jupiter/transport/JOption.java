@@ -53,7 +53,7 @@ public final class JOption<T> extends AbstractConstant<JOption<T>> {
     @SuppressWarnings("unchecked")
     public static <T> JOption<T> valueOf(Class<?> firstNameComponent, String secondNameComponent) {
         return (JOption<T>) pool.valueOf(firstNameComponent, secondNameComponent);
-    }
+    } 
 
     /**
      * Creates a new {@link JOption} for the given {@param name} or fail with an

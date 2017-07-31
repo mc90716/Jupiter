@@ -17,9 +17,14 @@
 package org.jupiter.common.util;
 
 import org.junit.Test;
+import org.jupiter.common.util.test.Apple;
+import org.jupiter.common.util.test.Fruit;
+import org.jupiter.common.util.test.Orange;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.Assert.assertTrue;
 
@@ -39,6 +44,7 @@ public class ListsTest {
         fromList.add("3");
         fromList.add("4");
 
+
         List<Integer> toList = Lists.transform(fromList, new Function<String, Integer>() {
 
             @Override
@@ -46,8 +52,26 @@ public class ListsTest {
                 return Integer.parseInt(input);
             }
         });
+        List<List<String>> fL = new LinkedList<>();
+        fL.add(new ArrayList<String>());
+        fL.add(new ArrayList<String>());
 
         assertTrue(toList.size() == fromList.size());
         System.out.println(toList);
+    }
+
+    public static void main(String[] args) {
+        List<Fruit> list = new LinkedList<>();
+        list.add(new Apple());
+        list.add(new Apple());
+        list.add(new Apple());
+
+        Lists.transform(list, new Function<Object, Orange>() {
+
+            @Override
+            public Orange apply(Object input) {
+                return null;
+            }
+        });
     }
 }

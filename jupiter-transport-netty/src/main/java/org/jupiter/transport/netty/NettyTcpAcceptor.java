@@ -33,10 +33,7 @@ import java.util.concurrent.ThreadFactory;
 import static org.jupiter.common.util.JConstants.NEWLINE;
 
 /**
- * jupiter
- * org.jupiter.transport.netty
- *
- * @author jiachun.fjc
+ * Netty的TCP Acceptor，与UDT相比，多了个nativeET参数，用于native epoll ET
  */
 public abstract class NettyTcpAcceptor extends NettyAcceptor {
 

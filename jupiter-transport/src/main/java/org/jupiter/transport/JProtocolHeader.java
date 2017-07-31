@@ -97,7 +97,7 @@ public class JProtocolHeader {
     }
 
     public long id() {
-        return id;
+        return id; 
     }
 
     public void id(long id) {

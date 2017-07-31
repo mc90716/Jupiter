@@ -24,12 +24,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 
 /**
- * The rpc server.
- *
- * jupiter
- * org.jupiter.rpc
- *
- * @author jiachun.fjc
+ *  RPC服务器，该接口表示一个RPC服务器应该具备的基本功能
  */
 public interface JServer extends Registry {
 

@@ -52,10 +52,7 @@ import static org.jupiter.common.util.JConstants.AVAILABLE_PROCESSORS;
 import static org.jupiter.common.util.Preconditions.checkNotNull;
 
 /**
- * jupiter
- * org.jupiter.transport.netty
- *
- * @author jiachun.fjc
+ *  Connector是指客户端，用于连接服务器，并且向服务器发送消息
  */
 public abstract class NettyConnector extends AbstractJClient implements JConnector<JConnection> {
 
@@ -119,6 +116,11 @@ public abstract class NettyConnector extends AbstractJClient implements JConnect
         return manageConnections(new ServiceMetadata(annotation.group(), annotation.version(), providerName));
     }
 
+    /**
+     * 此处发生客户端订阅动作，客户端发消息给配置中心，订阅服务
+     * @param directory
+     * @return
+     */
     @Override
     public ConnectionManager manageConnections(final Directory directory) {
 
@@ -137,6 +139,7 @@ public abstract class NettyConnector extends AbstractJClient implements JConnect
                     public void notify(List<RegisterMeta> allRegisterMeta) {
                         for (RegisterMeta meta : allRegisterMeta) {
                             UnresolvedAddress address = new UnresolvedAddress(meta.getHost(), meta.getPort());
+                            System.out.println("Notify allRegisterMeta ===" + address.toString());
                             JChannelGroup group = group(address);
                             if (!group.isAvailable()) {
                                 connectTo(address, group, meta);
@@ -164,6 +167,8 @@ public abstract class NettyConnector extends AbstractJClient implements JConnect
                             if (!group.isAvailable()) {
                                 connectTo(address, group, registerMeta);
                             }
+                            System.out.println("Notify allRegisterMeta =event==" + address.toString());
+
                             // 添加ChannelGroup到指定directory
                             addChannelGroup(directory, group);
 

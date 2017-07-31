@@ -56,7 +56,7 @@ public class JRequest extends BytesHolder {
     public void message(MessageWrapper message) {
         this.message = message;
     }
-
+ 
     public long timestamp() {
         return timestamp;
     }

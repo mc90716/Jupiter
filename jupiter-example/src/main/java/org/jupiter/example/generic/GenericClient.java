@@ -16,6 +16,8 @@
 
 package org.jupiter.example.generic;
 
+import java.nio.ByteBuffer;
+
 import org.jupiter.rpc.Directory;
 import org.jupiter.rpc.consumer.GenericProxyFactory;
 import org.jupiter.rpc.consumer.invoker.GenericInvoker;
@@ -35,11 +37,14 @@ public class GenericClient {
 
     public static void main(String[] args) {
         Directory directory = new ServiceMetadata("test", "1.0.0.daily", "GenericServiceTest");
-
+//        MappedByteBuffer
+//        FileChannel
+//        Channel
+        
         NettyConnector connector = new JNettyTcpConnector();
         // 连接ConfigServer
         connector.connectToConfigServer("127.0.0.1:20001");
-        // 自动管理可用连接
+        // 自动管理可用连接，这里做订阅
         JConnector.ConnectionManager manager = connector.manageConnections(directory);
         // 等待连接可用
         if (!manager.waitForAvailable(3000)) {
